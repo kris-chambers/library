@@ -33,6 +33,18 @@ function displayBooks(arrayOfBooks) {
   }
 }
 
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("#newBook");
+const closeButton = document.querySelector("#cancelButton");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+})
+
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 300, "have read");
 addBookToLibrary("1984", "George Orwell", 328, "have not read");
