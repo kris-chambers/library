@@ -11,7 +11,7 @@ function Book(title, author, numberOfPages, readStatus) {
 function addBookToLibrary(book) {
   const newBook = new Book(book.title, book.author, book.numberOfPages, book.readStatus);
   myLibrary.push(newBook);
-  console.log("Book added to library:", book.title, "My library size:", myLibrary.length)
+  console.log("Book added to library:", book.title, "- My library size:", myLibrary.length)
 };
 
 function displayBooks(arrayOfBooks) {
@@ -38,16 +38,6 @@ function displayBooks(arrayOfBooks) {
     newButton.id = `${arrayOfBooks[i].id}`;
     newButton.appendChild(deleteText);
     newButton.dataset.uuid = `${arrayOfBooks[i].id}`;
-    // newButton.addEventListener("click", (e) => {
-    //   const bookId = e.target.id;
-    //   console.log('Clicked button:', bookId)
-
-    //   const bookToRemove = myLibrary.findIndex(myLibrary => myLibrary.id == bookId);
-    //   if (bookToRemove !== -1) {
-    //     myLibrary.splice(bookToRemove, 1);
-    //     console.log(myLibrary);
-    //   };
-    // });
   };
   console.log("Displayed books.")
 };
@@ -143,18 +133,11 @@ const deleteButtons = document.querySelectorAll(".deleteButton");
 
 deleteButtons.forEach(button => {
   button.addEventListener("click", (e) => {
-    // e.preventDefault();
-    // e.stopPropagation();
-    
-    const bookId = e.target.id;
-    console.log('Removed book:', bookId)
 
-    const bookToRemove = myLibrary.findIndex(myLibrary => myLibrary.id == bookId);
-    if (bookToRemove !== -1) {
-      myLibrary.splice(bookToRemove, 1);
-    }
-    console.log("Added delete button event listeners.");
-    clearBooks();
-    displayBooks(myLibrary);
+    const bookId = e.target.id;
+    const library = document.querySelector("#library");
+    const bookToRemove = document.querySelector(`div[data-uuid="${bookId}"`);
+
+    library.removeChild(bookToRemove);
     });
 });
