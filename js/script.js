@@ -54,6 +54,7 @@ function displayBooks(arrayOfBooks) {
 
     newReadStatusButton.addEventListener("click", (e) => {
       const bookId = e.target.id;
+      
       if (newReadStatusButton.innerHTML == "Mark As Read") {
         newReadStatusButton.innerHTML = "";
         newReadStatusButton.innerHTML = "Mark As Not Read";
@@ -87,7 +88,7 @@ function addInput() {
   const titleInput = document.querySelector("#title");
   const authorInput = document.querySelector("#author");
   const numberOfPagesInput = document.querySelector("#numberOfPages");
-  const readStatusInput = document.querySelector("#readStatus");
+  // const readStatusInput = document.querySelector("#readStatus");
 
   return { title: titleInput.value, author: authorInput.value, numberOfPages: numberOfPagesInput.value };
 };
