@@ -38,6 +38,14 @@ function displayBooks(arrayOfBooks) {
     newButton.id = `${arrayOfBooks[i].id}`;
     newButton.appendChild(deleteText);
     newButton.dataset.uuid = `${arrayOfBooks[i].id}`;
+    newButton.addEventListener("click", (e) => {
+
+    const bookId = e.target.id;
+    const library = document.querySelector("#library");
+    const bookToRemove = document.querySelector(`div[data-uuid="${bookId}"`);
+
+    library.removeChild(bookToRemove);
+    });
   };
   console.log("Displayed books.")
 };
@@ -131,13 +139,13 @@ displayBooks(myLibrary);
 
 const deleteButtons = document.querySelectorAll(".deleteButton");
 
-deleteButtons.forEach(button => {
-  button.addEventListener("click", (e) => {
+// deleteButtons.forEach(button => {
+//   button.addEventListener("click", (e) => {
 
-    const bookId = e.target.id;
-    const library = document.querySelector("#library");
-    const bookToRemove = document.querySelector(`div[data-uuid="${bookId}"`);
+//     const bookId = e.target.id;
+//     const library = document.querySelector("#library");
+//     const bookToRemove = document.querySelector(`div[data-uuid="${bookId}"`);
 
-    library.removeChild(bookToRemove);
-    });
-});
+//     library.removeChild(bookToRemove);
+//     });
+// });
